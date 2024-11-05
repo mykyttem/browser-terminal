@@ -1,0 +1,27 @@
+.terminal {
+    background-color: #1e1e1e;
+    color: #00ff00;
+    padding: 20px;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: auto;
+    font-family: 'Courier New', Courier, monospace;
+    border: none;
+}
+
+.output {
+    margin-bottom: 10px;
+}
+
+.input-area {
+    display: flex;
+}
+
+.input {
+    background-color: #1e1e1e;
+    color: #00ff00;
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-family: 'Courier New', Courier, monospace;
+}
