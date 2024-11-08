@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BodyTerminal from './BodyTerminal';
+import BodyTerminal from './cmd/BodyTerminal';
 import Tabs from './components/Tabs';
 import './styles/App.css';
 
