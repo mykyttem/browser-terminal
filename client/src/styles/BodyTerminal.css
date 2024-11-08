@@ -1,8 +1,8 @@
 .terminal {
     background-color: #1e1e1e;
     color: #00ff00;
-    padding: 20px;
-    height: 100vh;
+    padding: 60px 20px 20px;
+    height: calc(100vh - 60px);
     width: 100vw;
     overflow-y: auto;
     font-family: 'Courier New', Courier, monospace;

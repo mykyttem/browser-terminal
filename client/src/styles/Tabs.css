@@ -1,0 +1,26 @@
+.tabs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    background-color: #333;
+    padding: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.tab {
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.tab.active {
+    background-color: #555;
+    border-radius: 4px;
+    font-weight: bold;
+}

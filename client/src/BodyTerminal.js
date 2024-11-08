@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './BodyTerminal.css';
+import './styles/BodyTerminal.css';
+
 
 const BodyTerminal = () => {
     const [input, setInput] = useState('');
