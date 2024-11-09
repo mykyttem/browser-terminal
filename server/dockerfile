@@ -1,0 +1,9 @@
+FROM busybox:latest
+
+# create test directories and files
+RUN mkdir -p /test_dir/subdir1 /test_dir/subdir2 && \
+    echo "This is a test file" > /test_dir/test_file.txt && \
+    echo "This is another test file" > /test_dir/subdir1/test_file_in_subdir.txt
+
+
+CMD ["sh", "-c", "echo 'Listing files in /test_dir'; ls -l /test_dir; tail -f /dev/null"]

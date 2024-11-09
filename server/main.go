@@ -1,27 +1,23 @@
 package main
 
 import (
-    "log"
-    "github.com/gin-gonic/gin"
-    "commands_module/lib"
-    "commands_module/commands"
+	"log"
+	"net/http"
+	"commands_module/lib"
 )
 
 func main() {
-    // init connect to Redis
-    if err := lib.InitRedis(); err != nil {
-        log.Fatalf("Error initializing Redis: %v", err)
-    }
+	// create a Docker client
+	cli, err := lib.NewDockerClient()
+	if err != nil {
+		log.Fatal("Failed to create Docker client:", err)
+	}
 
-    // load commands з JSON
-    if err := commands.LoadCommands("./commands/commands_files.json"); err != nil {
-        log.Fatalf("Failed to load commands: %v", err)
-    }
+	// websocket
+	http.HandleFunc("/ws", func(w http.ResponseWriter, req *http.Request) {
+		lib.ServeWebSocket(w, req, cli)
+	})
 
-    // init router
-    router := gin.Default()
-    lib.RegisterRoutes(router)
-
-    log.Println("Server is running on http://localhost:8080")
-    router.Run("localhost:8080")
+	log.Println("WebSocket server started at ws://localhost:8080/ws")
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
