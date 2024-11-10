@@ -27,11 +27,11 @@ const Settings = ({ setTheme }) => {
             <h2>Settings</h2>
             <p>Choose your terminal theme:</p>
             <div className="button-group">
-                <button className="button" onClick={handleDarkMode}>Dark Mode</button>
-                <button className="button" onClick={handleLightMode}>Light Mode</button>
-                <button className="button" onClick={handleBlueMode}>Blue Mode</button>
-                <button className="button" onClick={handleRedMode}>Red Mode</button>
-                <button className="button" onClick={handleGreenMode}>Green Mode</button>
+                <button className="button" onClick={handleDarkMode}><span style={{ backgroundColor: '#1e1e1e' }}></span>Dark Mode</button>
+                <button className="button" onClick={handleLightMode}><span style={{ backgroundColor: '#f1f1f1' }}></span>Light Mode</button>
+                <button className="button" onClick={handleBlueMode}><span style={{ backgroundColor: '#0000ff' }}></span>Blue Mode</button>
+                <button className="button" onClick={handleRedMode}><span style={{ backgroundColor: '#ff0000' }}></span>Red Mode</button>
+                <button className="button" onClick={handleGreenMode}><span style={{ backgroundColor: '#00ff00' }}></span>Green Mode</button>
             </div>
         </div>
     );
