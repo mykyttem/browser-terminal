@@ -30,13 +30,15 @@ const BodyTerminal = ({ theme }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         HandlerClear(e, input, setInput, setOutput);
-        // Sending a command via WebSocket
-        if (input.trim() !== '') {
-            sendMessage(input);
-            setOutput((prevOutput) => [...prevOutput, `$ ${input}`]);
+    
+        // Sanitize input before sending
+        let sanitizedInput = input.trim().replace(/["']/g, "");
+        if (sanitizedInput !== '') {
+            sendMessage(sanitizedInput);
+            setOutput((prevOutput) => [...prevOutput, `$ ${sanitizedInput}`]);
             setInput('');
         }
-    };
+    };    
 
     // Clean up ANSI codes before displaying
     const cleanedOutput = output.map(removeAnsiCodes);
