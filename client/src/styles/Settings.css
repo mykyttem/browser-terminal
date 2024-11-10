@@ -5,7 +5,6 @@
     height: calc(100vh - 60px);
     width: 100vw;
     overflow-y: auto;
-    font-family: 'Courier New', Courier, monospace;
     border: none;
 }
 
@@ -25,7 +24,6 @@
     color: #00ff00;
     border: 1px solid #00ff00;
     padding: 10px 20px;
-    font-family: 'Courier New', Courier, monospace;
     cursor: pointer;
     margin-top: 10px;
     font-size: 1.1em;
@@ -48,6 +46,5 @@
     border: 1px solid #00ff00;
     outline: none;
     flex-grow: 1;
-    font-family: 'Courier New', Courier, monospace;
     padding: 10px;
 }
