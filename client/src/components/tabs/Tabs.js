@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Tabs.css';
+import '../../styles/Tabs.css';
 
 const Tabs = ({ tabs, activeTab, setActiveTab }) => {
     return (

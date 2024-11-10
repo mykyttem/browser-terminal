@@ -4,7 +4,7 @@ import { HandlerClear } from './handlers/HandlerCommands';
 import { removeAnsiCodes } from './Utils';
 import useWebSocket from './hooks/UseWebSocket';
 
-const BodyTerminal = () => {
+const BodyTerminal = ({ theme }) => {
     const [input, setInput] = useState('');
     const [output, setOutput] = useState([]);
     const [currentDir, setCurrentDir] = useState('/');
@@ -42,7 +42,7 @@ const BodyTerminal = () => {
     const cleanedOutput = output.map(removeAnsiCodes);
 
     return (
-        <div className="terminal">
+        <div className={`terminal ${theme}`}>
             <div className="output" style={{ maxHeight: '400px', overflowY: 'auto' }}>
                 {cleanedOutput.map((line, index) => (
                     <div key={index} style={{ whiteSpace: 'pre-wrap' }}>{line}</div>

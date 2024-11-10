@@ -1,12 +1,36 @@
 .terminal {
-    background-color: #1e1e1e;
-    color: #00ff00;
     padding: 60px 20px 20px;
     height: calc(100vh - 60px);
     width: 100vw;
     overflow-y: auto;
     font-family: 'Courier New', Courier, monospace;
     border: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.terminal.dark {
+    background-color: #1e1e1e;
+    color: #00ff00;
+}
+
+.terminal.light {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.terminal.blue {
+    background-color: #1e1e5e;
+    color: #0099ff;
+}
+
+.terminal.red {
+    background-color: #5e1e1e;
+    color: #ff3333;
+}
+
+.terminal.green {
+    background-color: #1e5e1e;
+    color: #00cc00;
 }
 
 .output {
@@ -15,13 +39,20 @@
 
 .input-area {
     display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.input-area span {
+    margin-right: 10px;
 }
 
 .input {
-    background-color: #1e1e1e;
-    color: #00ff00;
+    background-color: transparent;
+    color: inherit;
     border: none;
     outline: none;
     flex-grow: 1;
     font-family: 'Courier New', Courier, monospace;
+    padding: 10px;
 }
