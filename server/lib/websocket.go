@@ -9,6 +9,7 @@ import (
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/client"
 	"github.com/gorilla/websocket"
+	"strings"
 )
 
 // handles WebSocket connections and interacts with the Docker container.
@@ -26,6 +27,7 @@ func ServeWebSocket(w http.ResponseWriter, req *http.Request, cli *client.Client
 
 	// specify the container with which we will interact
 	containerID := "f92d29aa1c12"
+	currentDir := "/"
 
 	for {
 		// reading a command from a WebSocket
@@ -34,11 +36,15 @@ func ServeWebSocket(w http.ResponseWriter, req *http.Request, cli *client.Client
 			log.Println("Error reading message:", err)
 			return
 		}
-		log.Println("Received command:", string(msg))
+		command := string(msg)
+		log.Println("Received command:", command)
 
-		// creating an exec request to execute a command in a container
+		// formation of a complete team
+		fullCommand := "cd " + currentDir + " && " + command + " && pwd"
+
+		// executing a command in a container
 		execResp, err := cli.ContainerExecCreate(context.Background(), containerID, types.ExecConfig{
-			Cmd:          []string{"sh", "-c", string(msg)},
+			Cmd:          []string{"sh", "-c", fullCommand},
 			Tty:          true,
 			AttachStdout: true,
 			AttachStderr: true,
@@ -65,8 +71,15 @@ func ServeWebSocket(w http.ResponseWriter, req *http.Request, cli *client.Client
 			return
 		}
 
-		// sending the result of execution to a WebSocket
-		err = conn.WriteMessage(websocket.TextMessage, output)
+		outputStr := string(output)
+		lines := strings.Split(outputStr, "\n")
+		if len(lines) > 0 {
+			// the last line contains the new directory after the `pwd` command
+			currentDir = lines[len(lines)-2]
+		}
+
+		// sending the current directory and command output
+		err = conn.WriteMessage(websocket.TextMessage, []byte(currentDir+"\n"+outputStr))
 		if err != nil {
 			log.Println("Error sending message:", err)
 			return
