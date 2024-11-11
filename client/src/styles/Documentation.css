@@ -1,0 +1,77 @@
+.documentation {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    padding: 60px 20px;
+    height: calc(100vh - 60px);
+    width: 100vw;
+    overflow-y: auto;
+}
+
+.documentation h2 {
+    font-size: 2rem;
+    color: #ffc107;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.documentation section {
+    margin-bottom: 40px;
+}
+
+.documentation h3 {
+    font-size: 1.5rem;
+    color: #00acc1;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #00acc1;
+    padding-bottom: 5px;
+}
+
+.documentation ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.documentation ul li {
+    font-size: 1rem;
+    background-color: #333;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    color: #e0e0e0;
+    line-height: 1.5;
+}
+
+.documentation ul li::before {
+    content: '💡 ';
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.documentation table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.documentation th, .documentation td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+.documentation th {
+    color: #ffc107;
+    font-size: 1.1rem;
+}
+
+.documentation td code {
+    color: #00acc1;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.documentation tbody tr:hover {
+    background-color: #333;
+    transition: background-color 0.3s;
+}
